@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>@PuddingBot Blog</title>
+        <link>https://PuddingBot.github.io/blog</link>
+        <description>@PuddingBot Blog</description>
+        <lastBuildDate>Thu, 30 Dec 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Coming Soon]]></title>
+            <link>https://PuddingBot.github.io/blog/coming-soon</link>
+            <guid>coming-soon</guid>
+            <pubDate>Thu, 30 Dec 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[A blog will soon be added in this spot.]]></description>
+            <content:encoded><![CDATA[<p>A blog will soon be added in this spot.
+As soon as there&#x27;s anything worthwhile to talk about and the initial
+alpha development phase of <a href="https://t.me/puddingbot">@PuddingBot</a> is complete.</p>]]></content:encoded>
+        </item>
+    </channel>
+</rss>

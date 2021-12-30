@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpudding_bot_docs=self.webpackChunkpudding_bot_docs||[]).push([[535],{5641:function(o){o.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Coming Soon","permalink":"/blog/coming-soon"}]}')}}]);
