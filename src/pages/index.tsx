@@ -13,17 +13,21 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+        <div className={clsx ("row", styles.buttons)}>
+          <div className="col">
           <Link
-            className="button button--info button--lg"
+            className="button button--info button--lg button--block col--1 shadow--md"
             to="/docs/intro">
             User Documentation
           </Link>
+          </div>
+          <div className="col">
           <Link
-            className="button button--warning button--lg"
+            className="button button--warning button--lg button--block col--2 col--offset-1 shadow--md"
             to="/devdocs/dev">
             Developer Documentation
           </Link>
+          </div>
         </div>
       </div>
     </header>
