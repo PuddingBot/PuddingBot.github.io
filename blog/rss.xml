@@ -4,9 +4,38 @@
         <title>@PuddingBot Blog</title>
         <link>https://PuddingBot.github.io/blog</link>
         <description>@PuddingBot Blog</description>
-        <lastBuildDate>Thu, 30 Dec 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 23 Jan 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Cerberus Considered Harmful]]></title>
+            <link>https://PuddingBot.github.io/blog/why-not-cerberus</link>
+            <guid>why-not-cerberus</guid>
+            <pubDate>Sun, 23 Jan 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[The following blog post outlines some of the reasons I generally advise against choosing Cerberus as your Telegram group management bot.]]></description>
+            <content:encoded><![CDATA[<p>The following blog post outlines some of the reasons I generally advise against choosing <a href="https://t.me/cerberus_protection_bot">Cerberus</a> as your Telegram group management bot.</p><p>This article is based on version <strong><em>0.3.0</em></strong> of <em>Cerberus Protection Bot</em>.</p><h3>Trust</h3><p>The Cerberus maintainer is a rather sketchy figure. <br/>
+Not only does he refuse any type of code audit, he has also previously been caught attempting to subvert a rival Telegram group (oh the joys of <a href="https://en.wikipedia.org/wiki//pol/"><strong>/pol/</strong></a> Telegram clones) by trying to pit their admins against each other and slowly banning users from these groups. A practice generally known as <strong>nuking</strong>.</p><p>Since the development process is entirely closed and everything happens in private <br/> (as opposed to <a href="https://missrose.org/">Rose</a>, which is closed source but has a documented development process, a <a href="https://t.me/s/MarieNews">changelog</a> and a <a href="https://pnvlarsen.me/projects/">blog</a>), nobody but its sole developer can be sure what direction is being taken, what design principles are being followed, redefined or outright ignored, or if any exploits are known.</p><p>Furthermore, I&#x27;ve personally witnessed the author of Cerberus write FROM his bot.<br/>
+This is not well known — nor communicated, for obvious reasons — but possible through the use of a 3rd party Telegram client like <a href="https://play.google.com/store/apps/details?id=org.telegram.BifToGram&amp;hl=en&amp;gl=US">BGram</a>.<br/>
+<strong>(link provided solely for research purposes. I do NOT endorse the use of this product.)</strong></p><p>Lastly, his general attitude towards end users means that anybody using Cerberus is left to their own devices.<br/>
+No public support channels exist, and the documentation itself is rather sparse, technical and geared towards programmers rather
+than the average Joe.</p><p>The bot is linking to the author&#x27;s personal Telegram channel, which provides no valuable insights but instead promotes his Omegle.</p><details><summary>Screenshot</summary><p><img src="cerberus.png" alt="Omegle"/></p></details><h3>Incomplete documentation</h3><p>As already outlined in the previous paragraph, Cerberus&#x27; documentation is overall shoddy and incomplete.</p><p>The <strong>/help</strong> commands (there are several, since the author has chosen to separate them based on user scope) display a long, monotone list.<br/>
+There is no way to query help files for specific commands. Instead everything is presented vertically.</p><p>The <strong>/start</strong> command doesn&#x27;t limit itself to the bare essentials of using and exploring the bot, instead bludgeoning the user with a wall of text.</p><p>The <strong>/ownerhelp</strong> command doesn&#x27;t appear to work, at all. <br/>
+Neither in groups nor direct DMs to the bot have I nor others ever managed to coax the bot into returning any information.</p><p>Documentation for some of the more useful commands is wholly missing.<br/>
+The bot supports <em>ads</em> which are displayed every n-hours.<br/>
+Aside of the developer himself, nobody seems to be aware of its usage.<br/>
+Maybe there is no command and the ads are entered directly into a database
+by the sole maintainer?</p><p>The UI is cluttered and doesn&#x27;t take advantage of basic Telegram bot features. <br/>
+Inline buttons are wholly missing and a (very basic) command list was only added after my outspoken criticism.</p><details><summary>/start</summary><p><img src="cerberus2.png" alt="/start"/></p></details><details><summary>/help</summary><p><img src="cerberus3.png" alt="/help"/></p></details><details><summary>/modhelp</summary><p><img src="cerberus4.png" alt="/modhelp"/></p></details><details><summary>/smodhelp</summary><p><img src="cerberus5.png" alt="/smodhelp"/></p></details><h3>Architectural choices</h3><p>One of the things (the author of Cerberus names this as one of its outstanding features) that separates the bot from its contenders
+is that it doesn&#x27;t follow the tried and proved Telegram permission model, instead opting for an internal permission model of the author&#x27;s own design.</p><p>The sparse documentation prompts the group owner to give Cerberus full permission and only promote other admins through Cerberus&#x27; <strong>/promote</strong> and <strong>/superpromote</strong> commands.<br/>
+On closer examination, this leads to all admin permissions being managed internally by Cerberus.</p><p>As far as Telegram is concerned, <br/>
+all admins promoted by Cerberus (admins or &quot;superadmins&quot; — as Cerberus defines admins that can demote and, consequently, ban other admins) have the same two basic permissions set in the Telegram UI. &quot;Change group info&quot; and &quot;Pin messages&quot;. <br/>
+It is thus clear that Cerberus violates the existing permission model and instead opts to implement its own, largely undocumented, cruft.</p><p>With the aforementioned in mind, I&#x27;ve also been informed by multiple sources that they&#x27;re unable to remove group members that are not even clearly identified as admins.</p><h3>Uncertain status</h3><p>The author of Cerberus failed to enclose what stage of the software development life cycle his bot is actually in.<br/>
+Nothing suggests that the bot is production ready, but nothing suggests that it&#x27;s still in alpha or beta either.</p><p>Features are added in secret, at random intervals. Often without even incrementing the version number.
+The bot is taken offline for maintenance or due to an issue without prior notice.</p><p>Combined with the lack of support, this leaves the user wondering whether Cerberus has not already reached
+End-of-life or, at best, a maintenance stage.</p><h3>Closed source</h3><p>As a major proponent of <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FOSS</a> software,<br/> I generally advise against the use of closed source or proprietary software products.</p><p>Closed source software, especially when produced by a small group of people or a single developer, seldom provides a coherent support experience.<br/>
+One of the strengths of free- and open-source software lies in its inherent capability to create communities and produce coherent documentation and other forms of community service.</p><p><a href="https://t.me/puddingbot">@PuddingBot</a> is and will remain completely free (as in freedom AND free beer) and open-source.<br/>
+As the author and maintainer of @PuddingBot I pledge to keep sensible data safe and handled with utmost care.</p><p>The full and unabridged <a href="https://github.com/PuddingBot/pudding-bot">@PuddingBot source code can be found on GitHub</a>.</p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Coming Soon]]></title>
             <link>https://PuddingBot.github.io/blog/coming-soon</link>
