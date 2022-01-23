@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.png',
   organizationName: 'PuddingBot', // Usually your GitHub org/user name.
   projectName: 'PuddingBot.github.io', // Usually your repo name.
   trailingSlash: false,
