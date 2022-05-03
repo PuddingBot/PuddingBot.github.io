@@ -114,7 +114,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} @PuddingBot built with 💖.`,
+        copyright: `Copyright © ${new Date().getFullYear()} @PuddingBot built with 💖`,
       },
       prism: {
         theme: lightCodeTheme,
