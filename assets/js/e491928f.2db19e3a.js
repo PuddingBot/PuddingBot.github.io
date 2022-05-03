@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpudding_bot_docs=self.webpackChunkpudding_bot_docs||[]).push([[164],{4808:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/astilectron","name":"astilectron","count":1,"permalink":"/blog/tags/astilectron"}')}}]);

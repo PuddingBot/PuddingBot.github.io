@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpudding_bot_docs=self.webpackChunkpudding_bot_docs||[]).push([[535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Cerberus Considered Harmful","permalink":"/blog/why-not-cerberus"},{"title":"Coming Soon","permalink":"/blog/coming-soon"}]}')}}]);

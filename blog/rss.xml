@@ -4,9 +4,56 @@
         <title>@PuddingBot Blog</title>
         <link>https://PuddingBot.github.io/blog</link>
         <description>@PuddingBot Blog</description>
-        <lastBuildDate>Sun, 23 Jan 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 03 May 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[The Joy of Forking]]></title>
+            <link>https://PuddingBot.github.io/blog/forking-fun</link>
+            <guid>forking-fun</guid>
+            <pubDate>Tue, 03 May 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[I've recently gotten back into forking (more precisely, hard forking) multiple projects on GitHub.]]></description>
+            <content:encoded><![CDATA[<p>I&#x27;ve recently gotten back into forking (more precisely, hard forking) multiple projects on GitHub.</p><p>This can, undeniably, pose a fun experience of which I&#x27;d like to give some short examples as well as the reasoning behind the fork.</p><h3><a href="https://github.com/Happy-Ferret/neocatclock">NeoCatclock</a></h3><p><a href="https://github.com/Happy-Ferret/neocatclock"><strong>NeoCatclock</strong></a> is a fork of the venerable <a href="https://github.com/BarkyTheDog/catclock">catclock</a> by <strong>BarkyTheDog</strong> which itself is a slight
+update from the X10 original to work on modern X11 *nix systems. <br/></p><p>To better understand the code, I condensed the original by removing the <em>digital</em> and <em>analog</em> modes <br/>
+and, finally, the mode code itself. <br/>
+This alone saved me about 950 lines of code. <br/></p><p>The current process makes me study the GTK3+ documentation in-depth, <br/>
+as the ultimate goal is to port <strong>catclock</strong> from <a href="https://motif.ics.com/">Motif</a> to <a href="https://www.gtk.org/">GTK</a> to make it portable. <br/></p><p>Eventually, I plan on rewriting the application in Go, using my <a href="https://github.com/Anima-OS/CoreGraphics">CoreGraphics</a> framework <br/>
+I originally wrote for Anima OS but now plan on bringing to all modern desktop platforms.</p><p><img src="catclock.png" alt="catclock"/></p><h3><a href="https://github.com/middangeard-fiction/yggdrasil">Yggdrasil</a></h3><p><a href="https://github.com/middangeard-fiction/yggdrasil"><strong>Yggdrasil</strong></a> is a fork of <a href="https://github.com/henck/trizbort">trizbort.io</a> <br/>
+which itself is a re-implementation of <a href="https://github.com/JasonLautzenheiser/trizbort">trizbort</a>, porting the latter from C# to the web.</p><p><strong>Yggdrasil</strong> contains <a href="https://github.com/henck/trizbort/commits?author=Happy-Ferret">two fixes</a> that have since been upstreamed. <br/></p><p>What separates my fork from the original project is that I turned the web app into a desktop app <br/>
+while also adding translation support. <br/>
+Finally, my fork contains an exporter for my own <strong>Middangeard</strong> engine.</p><p>I have not actively worked on the project since 2019 but intend to revive it very soon, <br/>
+just as I&#x27;m reviving <a href="https://github.com/middangeard-fiction/middangeard"><strong>Middangeard</strong></a> itself.</p><p><img src="yggdrasil.png" alt="yggdrasil"/></p><h3><a href="https://github.com/Happy-Ferret/hippo-next">Hippo Player Next</a> (Working Title)</h3><p><a href="https://github.com/Happy-Ferret/hippo-next"><strong>Hippo Player Next</strong></a> (<em>will probably be renamed to something else, to establish an original persona</em>) <br/>
+is a fork of <a href="https://github.com/nt1m/media-player">media-player</a> that removes both the Electron and the web app part <br/>
+to focus solely on the desktop.</p><p>To achieve this desktop transformation, my fork utilizes <a href="https://github.com/asticode/go-astilectron">go-astilectron</a>, <br/>
+a modern Electron binding to Go that uses a TCP socket as an IPC mechanism between the <br/>
+Go application and the Electron renderer.</p><p>In order to better facilitate <strong>go-astilectron</strong>, <br/>
+I upstreamed <a href="https://github.com/asticode/go-astilectron/pull/361">changes</a> that enable more fine grained window control <br/>
+without having to fall back on the <a href="https://www.npmjs.com/package/@electron/remote">Electron Remote</a> module, <br/>
+which can normally be used inside <strong>go-astilectron</strong> like the following <br/>
+(if, like me, you&#x27;re utilizing <a href="https://github.com/asticode/go-astilectron-bootstrap">go-astilectron-bootstrap</a>)</p><details><summary>Code</summary><pre><code class="language-go">Windows: []*bootstrap.Window{{
+            Homepage:       &quot;index.html&quot;,
+            MessageHandler: desktop.HandleMessages,
+            Options: &amp;astilectron.WindowOptions{
+                BackgroundColor: astikit.StrPtr(&quot;#333&quot;),
+                Center:          astikit.BoolPtr(true),
+                Width:           astikit.IntPtr(800),
+                Height:          astikit.IntPtr(600),
+                WebPreferences: &amp;astilectron.WebPreferences{
+                    EnableRemoteModule: astikit.BoolPtr(true),
+                },
+            },
+        }},
+</code></pre></details><p>Instead of the above and writing windowing code in JS, a window can now be set as <strong><code>Always on Top</code></strong> <br/>
+by accessing the <code>astilectron.Window</code> struct and calling <code>SetAlwaysOnTop(enable)</code> on it.</p><p>I also removed the CSD (Client Side Decorations) of the original Electron implementation <br/>
+in favor of re-using the OS&#x27; own window decorations.</p><p>Once baseline media support (which is utterly broken upstream) is established <br/>
+and the app uses a proper SQLite database to save playlists, <br/>
+I plan on adding support for classic MOD files and better support for theming.</p><p><img src="hippo.png" alt="hippo player"/></p><h3><a href="https://github.com/Happy-Ferret/scummc">ScummC</a></h3><p><a href="https://github.com/Happy-Ferret/scummc"><strong>ScummC</strong></a> and <a href="https://en.wikipedia.org/wiki/SCUMM">SCUMM</a> itself are something I&#x27;ve been fascinated with for <a href="https://happy-ferret.github.io/posts/scumm-1.html">quite a while</a>.</p><p>The <a href="https://github.com/AlbanBedel/scummc">original</a> by Alban Bedel has not been in active development since 2018. <br/>
+However, there has been a slight update in the music department, courtesy of <a href="https://github.com/Wavestation/oq-zik">Masami Komuro</a></p><p>I lost my original local changes (mostly documentation) to a hard drive wipe at my old workplace, <br/>
+but I plan on revisiting this project very soon.</p><h4>Possible changes</h4><ul><li>A modern, portable set of GUI tools (taking mild inspiration from <a href="http://lebostein.de/tomysoft/scumm/">Lebostein</a>)</li><li>Slight syntactic changes (while producing identical byte-code).</li><li>A fork of the <a href="https://github.com/idleberg/vscode-scummc">VSCode Extension</a> with changes and additions.</li><li>Updates to the Wiki and, possibly, a dedicated website.</li><li>Improved debugging, taking pointers from <a href="https://mixnmojo.com/features/sitefeatures/LucasArts-First-Words/2">MixNMojo</a>.</li><li>A more thorough example (including iMuse audio).</li><li>Proper branding.</li></ul><h2>How to</h2><p>The following is a quick and simple step-by-step guide on how to create a fork of an existing project:</p><ol><li>On the top right of a GitHub repository, locate the <img src="fork.png" alt="fork"/> button.</li><li>Fork the repository into an account/organization of your choice.</li><li>Locate and copy the link to your fork.</li><li>Open a terminal shell.</li><li><strong>CD</strong> to a directory of your choice.</li><li><code>git clone &lt;Fork URL&gt;</code></li><li>Now type <code>git remote add upstream &lt;URL to original repository&gt;</code> to link back to the original project.</li><li>You can now fetch upstream changes by typing <code>git fetch upstream</code> followed by <code>git pull upstream</code>.</li><li><code>git log upstream/&lt;branch&gt;</code> provides you with an upstream view of the commit log.</li><li>You can also cherry pick changes from upstream by providing a hash (i e <code>git cherry pick &lt;SHA&gt;</code>).</li><li>If you want to create pull requests from your new fork back to the upstream repository, <br/>
+push those changes to your own fork first, then create a pull request from your repository on GitHub.
+<img src="pr.png" alt="pull request"/>
+The <strong><code>Open pull request</code></strong> button is located under <strong><code>Contribute</code></strong> near your commit history.<br/><br/><br/></li></ol><blockquote><p><em>That&#x27;s it for today. If you&#x27;d like to donate to my work, I&#x27;m now on <a href="https://github.com/sponsors/Happy-Ferret">GitHub Sponsors💖</a></em></p></blockquote>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Cerberus Considered Harmful]]></title>
             <link>https://PuddingBot.github.io/blog/why-not-cerberus</link>

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpudding_bot_docs=self.webpackChunkpudding_bot_docs||[]).push([[116],{7430:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/ts","name":"ts","count":1,"permalink":"/blog/tags/ts"}')}}]);
